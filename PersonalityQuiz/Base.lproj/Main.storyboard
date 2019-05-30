@@ -330,10 +330,19 @@
                         <viewLayoutGuide key="safeArea" id="S0P-Iy-4vp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="OHc-fh-wrU">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="yb8-Rh-tBz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="yb8-Rh-tBz">
+                            <connections>
+                                <segue destination="vDr-eH-hAI" kind="unwind" unwindAction="unwindToIntroductionWithSegue:" id="mDB-JQ-rTC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="animalLabel" destination="cOm-BN-Ghk" id="JGT-5G-PMy"/>
+                        <outlet property="definitionLabel" destination="3OL-P1-mWQ" id="xdz-jr-aMP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BD1-HN-iwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vDr-eH-hAI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2130" y="136"/>
         </scene>

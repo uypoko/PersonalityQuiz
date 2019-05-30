@@ -19,7 +19,7 @@ class QuestionViewController: UIViewController {
                     Answer(text: "Fish", type: .cat),
                     Answer(text: "Carrots", type: .rabbit),
                     Answer(text: "Corn", type: .turtle)
-            ]),
+                    ]),
         Question(text: "Which activities do you enjoy?",
                 type: .multiple,
                 answers: [
@@ -27,7 +27,7 @@ class QuestionViewController: UIViewController {
                     Answer(text: "Sleeping", type: .cat),
                     Answer(text: "Cuddling", type: .rabbit),
                     Answer(text: "Eating", type: .dog)
-                ]),
+                    ]),
         Question(text: "How much do you enjoy car rides?",
                  type: .ranged,
                  answers: [
@@ -37,8 +37,8 @@ class QuestionViewController: UIViewController {
                     Answer(text: "I barely notice them",
                            type: .turtle),
                     Answer(text: "I love them", type: .dog)
-            ])
-    ]
+                    ])
+        ]
     var answersChosen = [Answer]()
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -138,6 +138,13 @@ class QuestionViewController: UIViewController {
         let index = Int(round(rangedSlider.value * Float(currentAnswers.count - 1)))
         answersChosen.append(currentAnswers[index])
         nextQuestion()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ResultsSegue" {
+            let resultsViewController = segue.destination as! ResultsViewController
+            resultsViewController.responses = answersChosen
+        }
     }
     /*
     // MARK: - Navigation
