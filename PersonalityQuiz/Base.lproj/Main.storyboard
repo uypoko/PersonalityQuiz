@@ -188,6 +188,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKt-z3-SU5">
                                         <rect key="frame" x="135.5" y="204" width="104" height="30"/>
                                         <state key="normal" title="Submit Answer"/>
+                                        <connections>
+                                            <action selector="multipleSubmitButtonTapped:" destination="d9q-Sv-cUV" eventType="touchUpInside" id="hse-v2-itc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -226,7 +229,10 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epC-yN-G6S">
                                         <rect key="frame" x="0.0" y="90.5" width="375" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Submit Answer"/>
+                                        <connections>
+                                            <action selector="rangedSubmitButtonTapped:" destination="d9q-Sv-cUV" eventType="touchUpInside" id="36q-2y-GC9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -267,6 +273,7 @@
                         <outlet property="questionProgressView" destination="bbC-6b-CUF" id="s0j-gP-ayx"/>
                         <outlet property="rangedBeginLabel" destination="g3T-jl-sm3" id="jq9-6o-mXZ"/>
                         <outlet property="rangedEndLabel" destination="zTx-Ko-KGH" id="yQF-G6-mwG"/>
+                        <outlet property="rangedSlider" destination="wsb-i9-31B" id="8vs-Db-g1t"/>
                         <outlet property="rangedStackView" destination="1W8-j7-KfS" id="C5s-Pi-4ZN"/>
                         <outlet property="singleStackView" destination="qjI-XE-cfC" id="uQl-yG-mEo"/>
                         <outletCollection property="singleButtons" destination="HDj-c9-MYd" collectionClass="NSMutableArray" id="73V-NU-uyc"/>
@@ -277,6 +284,10 @@
                         <outletCollection property="multipleLabels" destination="7p9-L0-fm2" collectionClass="NSMutableArray" id="khd-HM-k5V"/>
                         <outletCollection property="multipleLabels" destination="mTV-cT-ftY" collectionClass="NSMutableArray" id="6PP-Qq-rM8"/>
                         <outletCollection property="multipleLabels" destination="xmg-9T-f9b" collectionClass="NSMutableArray" id="mNi-gb-tek"/>
+                        <outletCollection property="multiSwitch" destination="if8-i1-yHX" collectionClass="NSMutableArray" id="9Fm-rF-eEp"/>
+                        <outletCollection property="multiSwitch" destination="Xs9-L8-x7N" collectionClass="NSMutableArray" id="dLB-jg-8aj"/>
+                        <outletCollection property="multiSwitch" destination="Ugj-3I-FQL" collectionClass="NSMutableArray" id="ANT-h4-imr"/>
+                        <outletCollection property="multiSwitch" destination="3ik-lQ-JoT" collectionClass="NSMutableArray" id="AQJ-Qq-jex"/>
                         <segue destination="Tcv-nM-LNH" kind="show" identifier="ResultsSegue" id="W4C-rP-1aq"/>
                     </connections>
                 </viewController>

@@ -47,10 +47,12 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet weak var multipleStackView: UIStackView!
     @IBOutlet var multipleLabels: [UILabel]!
+    @IBOutlet var multiSwitch: [UISwitch]!
     
     @IBOutlet weak var rangedStackView: UIStackView!
     @IBOutlet weak var rangedBeginLabel: UILabel!
     @IBOutlet weak var rangedEndLabel: UILabel!
+    @IBOutlet weak var rangedSlider: UISlider!
     
     @IBOutlet weak var questionProgressView: UIProgressView!
     
@@ -75,7 +77,7 @@ class QuestionViewController: UIViewController {
         case .multiple:
             updateMultipleStack(using: currentAnswers)
         case .ranged:
-            rangedStackView.isHidden = false
+            updateRangedStack(using: currentAnswers)
         }
     }
     
@@ -88,9 +90,19 @@ class QuestionViewController: UIViewController {
     
     func updateMultipleStack(using answers: [Answer]) {
         multipleStackView.isHidden = false
+        for sw in multiSwitch {
+            sw.isOn = false
+        }
         for (index, label) in multipleLabels.enumerated() {
             label.text = answers[index].text
         }
+    }
+    
+    func updateRangedStack(using answers: [Answer]) {
+        rangedStackView.isHidden = false
+        rangedSlider.setValue(0.5, animated: false)
+        rangedBeginLabel.text = answers.first?.text
+        rangedEndLabel.text = answers.last?.text
     }
     
     func nextQuestion() {
@@ -105,7 +117,26 @@ class QuestionViewController: UIViewController {
     
     @IBAction func singleButtonTapped(_ sender: UIButton) {
         let currentAnswers = questions[questionIndex].answers
-        answersChosen.append(currentAnswers[singleButtons.firstIndex(of: sender)!])
+        if let chosenIndex = singleButtons.firstIndex(of: sender) {
+            answersChosen.append(currentAnswers[chosenIndex])
+        }
+        nextQuestion()
+    }
+    
+    @IBAction func multipleSubmitButtonTapped(_ sender: Any) {
+        let currentAnswers = questions[questionIndex].answers
+        for (index, sw) in multiSwitch.enumerated() {
+            if sw.isOn {
+                answersChosen.append(currentAnswers[index])
+            }
+        }
+        nextQuestion()
+    }
+    
+    @IBAction func rangedSubmitButtonTapped(_ sender: Any) {
+        let currentAnswers = questions[questionIndex].answers
+        let index = Int(round(rangedSlider.value * Float(currentAnswers.count - 1)))
+        answersChosen.append(currentAnswers[index])
         nextQuestion()
     }
     /*
